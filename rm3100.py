@@ -106,13 +106,6 @@ class RM3100(object):
                 MagValues.append(data)
 
             ########################################################
-            livoxDataDir = '/home/ubuntu/livox_data/'
-            if not os.path.exists(livoxDataDir):
-                os.makedirs(livoxDataDir)
-            magDir = '/home/ubuntu/livox_data/mag/'
-            if not os.path.exists(magDir):
-                os.makedirs(magDir)
-
             year, month, day, hour, minute, sec, _, _, _ = datetime.now().timetuple()
             hourFolder = '{}{}-{}-{}_{}/'.format(magDir, year, month, day, hour)
             if not os.path.exists(hourFolder):
