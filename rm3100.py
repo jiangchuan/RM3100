@@ -53,7 +53,8 @@ class RM3100(object):
     DEG_PER_RAD = 180.0/3.14159265358979
     rm3100_resolution = 75  # microT/lsb, 200 cycle @ 1 avg
 
-    def __init__(self, SSN, DRDY):
+    def __init__(self, SSN, DRDY, magDir):
+        self.magDir = magDir
         GPIO.setwarnings(False)
         GPIO.setmode(GPIO.BCM)
         self.SSN = SSN
@@ -107,7 +108,7 @@ class RM3100(object):
 
             ########################################################
             year, month, day, hour, minute, sec, _, _, _ = datetime.now().timetuple()
-            hourFolder = '{}{}-{}-{}_{}/'.format(magDir, year, month, day, hour)
+            hourFolder = '{}{}-{}-{}_{}/'.format(self.magDir, year, month, day, hour)
             if not os.path.exists(hourFolder):
                 os.makedirs(hourFolder)
             csvPath = '{}{}-{}-{}_{}-{}.csv'.format(hourFolder, year, month, day, hour, minute)
