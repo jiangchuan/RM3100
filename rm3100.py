@@ -112,8 +112,7 @@ class RM3100(object):
             if not os.path.exists(hourFolder):
                 os.makedirs(hourFolder)
             csvPath = '{}{}-{}-{}_{}-{}.csv'.format(hourFolder, year, month, day, hour, minute)
-            print('Mag = {}'.format(MagValues))
-            rowStr = '{},{},{}\n'.format(MagValues[0], MagValues[1], MagValues[2])
+            rowStr = '{:.3f},{},{},{}\n'.format(time.time(), MagValues[0], MagValues[1], MagValues[2])
             with open(csvPath, 'a') as csvFile:
                 csvFile.write(rowStr)
             ########################################################

@@ -32,10 +32,12 @@ rm3100 = RM3100(SSN, DRDY, magDir)
 millis = 0
 time_before = 0
 while True:
-    data = rm3100.getHeading()
-    if data is not None:
-        millis = int(round(time.time() * 1000))
-        diff = (millis - time_before)/1000
-        hz = 1/diff
-        print('Heading: %d, Hz: %d' % (data, hz))
-        time_before = millis
+    data = rm3100.readMag()
+
+    # data = rm3100.getHeading()
+    # if data is not None:
+    #     millis = int(round(time.time() * 1000))
+    #     diff = (millis - time_before)/1000
+    #     hz = 1/diff
+    #     print('Heading: %d, Hz: %d' % (data, hz))
+    #     time_before = millis
