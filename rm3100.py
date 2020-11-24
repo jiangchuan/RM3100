@@ -101,6 +101,7 @@ class RM3100(object):
         MagValues = []
         if state == 1:
             raw = self.read3([0xA4])
+            currTime = time.time()
             for i in range(0, 9, 3):
                 data = float(self.recast24to32(
                     raw[i], raw[i+1], raw[i+2]))*self.rm3100_resolution
@@ -112,7 +113,7 @@ class RM3100(object):
             if not os.path.exists(hourFolder):
                 os.makedirs(hourFolder)
             csvPath = '{}{}-{}-{}_{}-{}.csv'.format(hourFolder, year, month, day, hour, minute)
-            rowStr = '{:.3f},{},{},{}\n'.format(time.time(), MagValues[0], MagValues[1], MagValues[2])
+            rowStr = '{:.3f},{},{},{}\n'.format(currTime, MagValues[0], MagValues[1], MagValues[2])
             with open(csvPath, 'a') as csvFile:
                 csvFile.write(rowStr)
             ########################################################
