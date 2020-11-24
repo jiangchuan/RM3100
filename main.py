@@ -28,6 +28,7 @@ if not os.path.exists(magDir):
 
 print('Start..........')
 rm3100 = RM3100(SSN, DRDY, magDir)
+rm3100 = RM3100(SSN, DRDY, magDir)
 millis = 0
 time_before = 0
 while True:
