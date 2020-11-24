@@ -112,6 +112,7 @@ class RM3100(object):
             if not os.path.exists(hourFolder):
                 os.makedirs(hourFolder)
             csvPath = '{}{}-{}-{}_{}-{}.csv'.format(hourFolder, year, month, day, hour, minute)
+            print('Mag = {}'.format(MagValues))
             rowStr = '{},{},{}\n'.format(MagValues[0], MagValues[1], MagValues[2])
             with open(csvPath, 'a') as csvFile:
                 csvFile.write(rowStr)
@@ -123,7 +124,7 @@ class RM3100(object):
 
     def getHeading(self):
         Mag = self.readMag()
-        if Mag == None:
+        if Mag is None:
             return None
         else:
             return -(math.atan2(Mag[1], Mag[0]) * self.DEG_PER_RAD)+180

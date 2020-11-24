@@ -32,7 +32,7 @@ millis = 0
 time_before = 0
 while True:
     data = rm3100.getHeading()
-    if data != None:
+    if data is not None:
         millis = int(round(time.time() * 1000))
         diff = (millis - time_before)/1000
         hz = 1/diff
