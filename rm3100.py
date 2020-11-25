@@ -108,6 +108,8 @@ class RM3100(object):
                 MagValues.append(data)
 
             ########################################################
+            if MagValues[0] == 0 and MagValues[1] == 0 and MagValues[2] == 0:
+                return None
             year, month, day, hour, minute, sec, _, _, _ = datetime.now().timetuple()
             hourFolder = '{}{}-{}-{}_{}/'.format(self.magDir, year, month, day, hour)
             if not os.path.exists(hourFolder):
