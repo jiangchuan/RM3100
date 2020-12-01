@@ -107,6 +107,8 @@ class RM3100(object):
                     raw[i], raw[i+1], raw[i+2]))*self.rm3100_resolution
                 MagValues.append(data)
 
+            print('Heading = {}'.format(-(math.atan2(MagValues[1], MagValues[0]) * self.DEG_PER_RAD)+180))
+
             ########################################################
             if MagValues[0] == 0 and MagValues[1] == 0 and MagValues[2] == 0:
                 return None
